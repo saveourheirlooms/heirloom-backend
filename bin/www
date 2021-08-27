@@ -5,7 +5,13 @@
  */
 
 var debug = require('debug')('heirloom:server');
-var http = require('http');
+var https = require('https');
+var fs = require('fs');
+
+var httpsOptions = {
+    key: fs.readFileSync('path/to/server-key.pem'),
+    cert: fs.readFileSync('path/to/server-crt.pem')
+};
 /**
  * Get port from environment and store in Express.
  */
