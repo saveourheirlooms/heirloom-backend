@@ -42,7 +42,7 @@ server.on('listening', onListening);
  * Create HTTPS server.
  */
 
-var server2 = https.createServer(app);
+var server2 = https.createServer(httpsOptions,app);
 
 /**
  * Listen on provided port, on all network interfaces.
