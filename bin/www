@@ -9,8 +9,8 @@ var https = require('https');
 var fs = require('fs');
 
 var httpsOptions = {
-    key: fs.readFileSync('path/to/server-key.pem'),
-    cert: fs.readFileSync('path/to/server-crt.pem')
+    key: fs.readFileSync('../client-key.pem'),
+    cert: fs.readFileSync('../client-cert.pem')
 };
 /**
  * Get port from environment and store in Express.
@@ -36,6 +36,21 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+/**
+ * Create HTTPS server.
+ */
+
+var server2 = https.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server2.listen(443);
+server2.on('error', onError);
+server2.on('listening', onListening);
+
 
 /**
  * Normalize a port into a number, string, or false.
