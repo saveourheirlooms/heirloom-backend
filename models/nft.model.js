@@ -11,6 +11,8 @@ const nftSchema = new Schema({
     category: {type: String, required: true},
     metadata: {type: String, required: true},
     contract: {type: String, required: true},
+    owner: {type: String, required: true},
+    tokenId: {type: Number, required: true},
 },
     {
         timestamps: true,
